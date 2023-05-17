@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+// import { useTheme } from '@emotion/react';
 import './App.css';
-
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import TypingBox from './Components/TypingBox/TypingBox';
+import { GlobalStyles } from './Styles/GlobalStyles';
+import { ThemeProvider } from 'styled-components';
+import { useTheme } from './ContextFiles/ThemeContext';
 function App() {
+    const {theme} = useTheme()
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeProvider theme={theme}>
+    <GlobalStyles/>
+
+    <div className="canvas">
+
+      <div className='header'>
+       <Header/>
+      </div>
+      <div>
+        {/* <Menu countDown={"00"}/> */}
+        
+        <TypingBox/>
+      </div>
+      <div className='Footer'>
+        <Footer/>
+      </div>
     </div>
+      </ThemeProvider>
   );
 }
 
