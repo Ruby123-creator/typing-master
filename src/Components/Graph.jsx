@@ -4,7 +4,7 @@ import { Line } from 'react-chartjs-2'
 import { useTheme } from '../ContextFiles/ThemeContext';
 
 function Graph({ graphData }) {
-   console.log(graphData)
+  //  console.log(graphData)
   const { theme } = useTheme();
   return (
     <>
