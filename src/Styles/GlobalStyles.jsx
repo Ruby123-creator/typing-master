@@ -166,5 +166,21 @@ ul a{
 }
 
 
+
+
+.result-box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.left-stats{
+  width: 50%;
+}
+.right-stats{
+  width: 50%;
+}
+
 `
   // color:${({theme})=>theme.textColor};

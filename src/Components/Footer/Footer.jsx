@@ -21,11 +21,11 @@ function Footer() {
     <div className='footer-section'>
         <div className='contact'>
             <ul>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer"><GitHubIcon/></a></li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer"><AccountCircleIcon/></a></li>
+                <li><a href="https://github.com/Ruby123-creator" target="_blank" rel="noopener noreferrer"><GitHubIcon/></a></li>
+                <li><a href="https://portfolio-gamma-murex-36.vercel.app/" target="_blank" rel="noopener noreferrer"><AccountCircleIcon/></a></li>
                 <li><a href="http://" target="_blank" rel="noopener noreferrer"><EmailIcon/></a></li>
                 <li><a href="http://" target="_blank" rel="noopener noreferrer"><DocumentScannerIcon/></a></li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer"><LinkedInIcon/></a></li>
+                <li><a href="https://www.linkedin.com/in/ruby-pal-123creator/" target="_blank" rel="noopener noreferrer"><LinkedInIcon/></a></li>
 
             </ul>
         </div>

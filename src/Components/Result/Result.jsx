@@ -4,24 +4,27 @@ import Graph from '../Graph'
     
 
 
-function Result({WPM,
-    Accuracy,
-    missedChars,
+function Result(
+  {wpm,
+    accuracy,
+    missedchars,
     inccorrectChars,
     correctChars,
     extraChars,
     graphData
 }) {
+
+  console.log(correctChars)
   return (
     <div className='result-box'>
         <div className="left-stats">
             <div>
             <div className="title">WPM</div>
-            <div className="subtitle">{WPM}</div>
+            <div className="subtitle">{wpm}</div>
             </div>
             <div>
             <div className="title">Accuracy</div>
-            <div className="subtitle">{Accuracy}</div>
+            <div className="subtitle">{accuracy}</div>
             </div>
             <div>
             <div className="title">Correct Characters</div>
@@ -31,7 +34,7 @@ function Result({WPM,
             <div className="subtitle">{inccorrectChars}</div>
             </div><div>
             <div className="title">Missed Characters</div>
-            <div className="subtitle">{missedChars}</div>
+            <div className="subtitle">{missedchars}</div>
             </div>
             <div>
             <div className="title">Extra Characters</div>
