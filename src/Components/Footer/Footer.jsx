@@ -22,7 +22,7 @@ function Footer() {
                 <li><a href="https://github.com/Ruby123-creator" target="_blank" rel="noopener noreferrer"><GitHubIcon/></a></li>
                 <li><a href="https://portfolio-gamma-murex-36.vercel.app/" target="_blank" rel="noopener noreferrer"><AccountCircleIcon/></a></li>
                 <li><a href="mailto:rubyp20001@gmail.com" target="_blank" rel="noopener noreferrer"><EmailIcon/></a></li>
-                <li><a href="" target="_blank" rel="noopener noreferrer"><DocumentScannerIcon/></a></li>
+                <li><a href="https://docs.google.com/document/d/1wi4Tw8faMdwlUhwv796ehgxrnYhJX6YB3Qo9mcvEE_o/edit#" target="_blank" rel="noopener noreferrer"><DocumentScannerIcon/></a></li>
                 <li><a href="https://www.linkedin.com/in/ruby-pal-123creator/" target="_blank" rel="noopener noreferrer"><LinkedInIcon/></a></li>
 
             </ul>
