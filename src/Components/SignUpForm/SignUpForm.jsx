@@ -2,7 +2,6 @@ import { Box, Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useTheme } from '../../ContextFiles/ThemeContext'
 import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { errorMaping } from '../../Utilis/ErrorMsg'
 function SignUpForm({handleClose}) {
@@ -21,7 +20,8 @@ function SignUpForm({handleClose}) {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                });              return;
+                });             
+                 return;
         }
         if(password!==confirmpassword){
             toast.error('🦄Password Mismatch!', {
@@ -33,9 +33,10 @@ function SignUpForm({handleClose}) {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                });              return;
+                });             
+                 return;
         }
-        createUserWithEmailAndPassword(auth, email, password)
+        auth.createUserWithEmailAndPassword( email, password)
         .then(() => {
           
           

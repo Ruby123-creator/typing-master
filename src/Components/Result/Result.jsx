@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Graph from '../Graph'
 import { auth ,db } from '../../firebase';
-import { addDoc , collection} from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
     
@@ -28,31 +27,30 @@ function Result(
 
 
   const pushuserDataToDB =async()=>{
-     const {uid} = auth.currentUser;
 
-    try {
-      // console.log('hello')
+    
+        const ResultRef = db.collection('Result')
+        const {uid} = auth.currentUser;
 
-      const ResultRef = await addDoc(collection(db, "Result"), {
+       ResultRef.add({
         wpm:wpm,
       Accuracy:Accuracy,
       timeStamp:new Date(),
       character:`${correctChars}/${incorrectChars}/${missedChars}/${extraChars}`,
       userId:uid,
-      });
-      console.log(ResultRef)
-      toast.success('🦄 User Data save!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                }); 
-    
-    } catch (e) {
+      }).then(()=>{
+        toast.success('🦄 User Data save!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          }); 
+      })
+    .catch (e=> {
       console.log(e)
       toast.error('not able to save user Data', {
                     position: "top-right",
@@ -64,7 +62,7 @@ function Result(
                     progress: undefined,
                     theme: "dark",
                     }); 
-                  }     
+                  } )    
     
 //     const resultRef = db.collection('Result');
 //     const {uid} = auth.currentUser;

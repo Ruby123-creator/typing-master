@@ -2,13 +2,12 @@ import { AppBar, Modal, Tabs,Tab } from '@mui/material'
 import './useraccount.css'
 import React,{useState} from 'react'
 import {Box} from '@mui/material'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginForm from '../LoginForm/LoginForm';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import { useTheme } from '../../ContextFiles/ThemeContext';
 import GoogleButton from 'react-google-button';
 import { auth } from '../../firebase';
-import { signInWithPopup ,GoogleAuthProvider ,signOut } from 'firebase/auth';
+import { signInWithPopup ,GoogleAuthProvider  } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { errorMaping } from '../../Utilis/ErrorMsg';
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -19,7 +18,8 @@ function UserAccount() {
     const [value ,setValue] = useState(0)
     const {theme} = useTheme()
     const Navigate = useNavigate()
-    const user =useAuthState(auth)
+    const [user] =useAuthState(auth)
+    
   const handleModalOpen =()=>{
     if(user){
          Navigate('/user')
@@ -67,7 +67,7 @@ function UserAccount() {
     });
   }
   const logout=()=>{
-    signOut(auth).then(()=>{
+    auth.signOut().then(()=>{
       toast.success('signOut successfully', {
         position: "top-right",
         autoClose: 5000,
@@ -78,6 +78,7 @@ function UserAccount() {
         progress: undefined,
         theme: "dark",
         }); 
+        Navigate('/')
     }).catch(e=>{
       toast.error('some error occurred', {
         position: "top-right",
@@ -93,8 +94,10 @@ function UserAccount() {
   }
     return (
     <div>
-        <AccountCircleIcon onClick={handleModalOpen}/>
-      {user && <LogoutIcon onClick={logout} fontSize='32px'/>} 
+      <div style={{display:'flex' ,gap:'20px'}}>
+        <img src={user?.photoURL} alt="user" style={{width:'40px',borderRadius:'50%'}} onClick={handleModalOpen}/>
+      {user && <LogoutIcon  onClick={logout} fontSize='large'/>}
+      </div> 
         <Modal
          open={open}
          onClose={handleClose}

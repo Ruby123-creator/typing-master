@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase';
+import { auth  } from '../firebase';
 
 
 function UserInfo({ totalTest }) {
@@ -9,14 +9,14 @@ function UserInfo({ totalTest }) {
 
             <div className="userinfo">
                 <div className="image">
-                    <img src={user.photoURL} style={{ width:'200px', borderRadius:'50%'}} alt="profile_img"/>
+                    <img src={user?.photoURL} style={{ width:'200px', borderRadius:'50%'}} alt="profile_img"/>
                 </div>
                 <div className="info">
                     <div className="email">
-                        {user.email}
+                        {user?.email}
                     </div>
                     <div className="joinAt">
-                        {user.metadata.creationTime}
+                        {user?.metadata.creationTime}
                     </div>
                     <div className="test">
                 Total Test Taken  :- <span>{totalTest}</span>

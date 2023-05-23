@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { db ,auth} from '../firebase';
-import { getDocs ,collection } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
@@ -16,20 +15,21 @@ function User() {
   // const [dataLoad, setdataLoad] = useState(true)
   const fetchUserData = async () => {
     let tempData = [];
-    let tempgraphData = [];
-  console.log("hello")
-  // const { uid } = auth.currentUser;
-
-    const resultsRef = await getDocs(collection(db, "Result"))
-    resultsRef.docs.forEach((doc)=>{
-            console.log(doc.data())
-
-        tempData.push({...doc.data()})
-        tempgraphData.push([doc.data().timeStamp.toDate().toLocaleString().split(',')[0] ,doc.data().wpm])
-    })
-    
-      setData(tempData)
-      setGraphData(tempgraphData)
+    let tempGraphData = [];
+    const {uid} = auth.currentUser;
+  const resultsRef = db.collection('Result');
+  resultsRef
+  .where('userId', '==', uid)
+  .orderBy('timeStamp', 'desc')
+  .get()
+  .then(snapshot => {
+      snapshot.docs.map(doc => {
+          tempData.push({ ...doc.data() });
+          tempGraphData.push([doc.data().timeStamp.toDate().toLocaleString().split(','), doc.data().wpm]);
+      })
+      setData(tempData);
+      setGraphData(tempGraphData.reverse());
+  })
   };
   useEffect(() => {
     if(!loading){

@@ -2,7 +2,6 @@ import { Box, Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useTheme } from '../../ContextFiles/ThemeContext'
 import { auth } from '../../firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { errorMaping } from '../../Utilis/ErrorMsg'
 
@@ -25,8 +24,8 @@ function LoginForm({handleClose}) {
                 theme: "light",
                 });            return;
         }
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+auth.signInWithEmailAndPassword( email, password)
+  .then(() => {
     toast.success('🦄 Successfully Login!', {
         position: "top-right",
         autoClose: 5000,
