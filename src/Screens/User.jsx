@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth ,db } from '../firebase';
+import { db } from '../firebase';
 import { getDocs ,collection } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ function User() {
     let tempData = [];
     let tempgraphData = [];
   console.log("hello")
-  const { uid } = auth.currentUser;
+  // const { uid } = auth.currentUser;
 
     const resultsRef = await getDocs(collection(db, "Result"))
     resultsRef.docs.forEach((doc)=>{
@@ -39,7 +39,7 @@ function User() {
       navigate('/');
     } 
   
-  }, [loading]);
+  }, [loading,navigate,user]);
 
   if (loading) {
     return (

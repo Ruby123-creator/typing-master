@@ -1,5 +1,4 @@
 import React from 'react'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 
@@ -10,7 +9,7 @@ function UserInfo({ totalTest }) {
 
             <div className="userinfo">
                 <div className="image">
-                    <img src={user.photoURL} style={{ width:'200px', borderRadius:'50%'}} />
+                    <img src={user.photoURL} style={{ width:'200px', borderRadius:'50%'}} alt="profile_img"/>
                 </div>
                 <div className="info">
                     <div className="email">
