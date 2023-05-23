@@ -1,32 +1,29 @@
 // import { useTheme } from '@emotion/react';
 import './App.css';
-import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
-import TypingBox from './Components/TypingBox/TypingBox';
+
 import { GlobalStyles } from './Styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 import { useTheme } from './ContextFiles/ThemeContext';
+import 'react-toastify/dist/ReactToastify.css';
+import User from './Screens/User';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Screens/Home';
+
 function App() {
     const {theme} = useTheme()
   
   return (
     <ThemeProvider theme={theme}>
+          <ToastContainer />
+
     <GlobalStyles/>
+     <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/user' element={<User/>}/>
 
-    <div className="canvas">
-
-      <div className='header'>
-       <Header/>
-      </div>
-      <div>
-        {/* <Menu countDown={"00"}/> */}
-        
-        <TypingBox/>
-      </div>
-      <div className='Footer'>
-        <Footer/>
-      </div>
-    </div>
+     </Routes>
+    
       </ThemeProvider>
   );
 }

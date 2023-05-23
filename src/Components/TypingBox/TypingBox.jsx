@@ -14,7 +14,7 @@ function TypingBox() {
   const [intervalId, setIntervalId] = useState(null);
   const [currentwordIndex, setCurrentwordIndex] = useState(0);
   const [currentcharIndex, setCurrentcharIndex] = useState(0);
-  const [correctChars, setCorrectChars] = useState(0);
+  let [correctChars, setCorrectChars] = useState(0);
   const [incorrectChars, setInCorrectChars] = useState(0);
   const [extraChars, setExtraChars] = useState(0);
   const [missedChars, setMissedChars] = useState(0);
@@ -27,10 +27,7 @@ function TypingBox() {
   });
   // input reference for user typing box
   const inputRef = useRef(null);
-  //fun is used to focus that particular input so the user can write in typing box easily whenever refresh
-  function Inputfocus() {
-    inputRef.current.focus();
-  }
+  
 
 // it reurns an array of referencing the random words
   const wordsRefArray = useMemo(() => {
@@ -57,6 +54,7 @@ function TypingBox() {
     function countTimer() {
       setTimer((latesttime) => {
         setCorrectChars((correctChars) => {
+          
           setGraphData((graphData) => {
             return [
               ...graphData,
@@ -66,6 +64,7 @@ function TypingBox() {
               ],
             ];
           });
+            return correctChars;
         });
         if (latesttime === 1) {
           clearInterval(interval);
@@ -109,7 +108,7 @@ currentWords[currentcharIndex - 1].classList.remove("current-right");
   //for the missing characters
 setMissedChars(missedChars + (currentWords.length - currentcharIndex));
 for(let i=currentcharIndex;i<wordsArr.length;i++){
-    wordsArr[i].className += " skipped"
+    currentWords[i].className += " skipped"
 }
 currentWords[currentcharIndex].classList.remove("current");
 }
@@ -129,24 +128,9 @@ setCurrentwordIndex(currentwordIndex + 1);
 setCurrentcharIndex(0);
 return;
 }
-   // logic for currentletters
-
-    //if userentering key equal to the wordletter
-     if (e.key === wordsRefArray[currentwordIndex].current.childNodes[currentcharIndex].innerText) {
-      //give them correct classname
-      currentWords[currentcharIndex].className = "correct";
-      setCorrectChars(correctChars + 1);
-      console.log(correctChars)
-
-    } else {
-      //give them incorrect classname
-      currentWords[currentcharIndex].className = "incorrect";
-      // increase the incorrectChars
-      setInCorrectChars(incorrectChars + 1);
-    }   
 
 //logic for backspace
- if (e.keyCode === 8) {
+if (e.keyCode === 8) {
   //logic for backspace
   //if u r in next word then u will not to allow for backspace
   if (currentcharIndex !== 0) {
@@ -167,26 +151,46 @@ return;
   }
   return;
 }
+
+
+//logic for ending the word
+if (currentcharIndex === currentWords.length) {
+  //to add new letters
+  let newspan = document.createElement("span");
+  newspan.innerText = e.key;
+  newspan.className = "incorrect current-right extra";
+  //append these new charas to the word
+  wordsRefArray[currentwordIndex].current.append(newspan);
+ 
+ //after appending remove the current-right cursor
+  currentWords[currentcharIndex - 1].classList.remove("current-right");
+  // increase the current char
+  setCurrentcharIndex(currentcharIndex + 1);
+  //increase the extra character
+  setExtraChars(extraChars + 1);
+  return;
+}
+   // logic for currentletters
+
+    //if userentering key equal to the wordletter
+     if (e.key === currentWords[currentcharIndex].innerText) {
+      //give them correct classname
+      currentWords[currentcharIndex].className = "correct";
+      setCorrectChars(correctChars+1);
+      
+
+    } else {
+      //give them incorrect classname
+      currentWords[currentcharIndex].className = "incorrect";
+      // increase the incorrectChars
+      setInCorrectChars(incorrectChars + 1);
+    }   
+
+
    
  
 
-  //logic for ending the word
-    if (currentcharIndex === currentWords.length) {
-      //to add new letters
-      let newspan = document.createElement("span");
-      newspan.innerText = e.key;
-      newspan.className = "incorrect current-right extra";
-      //append these new charas to the word
-      wordsRefArray[currentwordIndex].current.append(newspan);
-     
-     //after appending remove the current-right cursor
-      currentWords[currentcharIndex - 1].classList.remove("current-right");
-      // increase the current char
-      setCurrentcharIndex(currentcharIndex + 1);
-      //increase the extra character
-      setExtraChars(extraChars + 1);
-      return;
-    }
+  
 
 
   // if current letter length equal to currentword length then move the cursor
@@ -202,7 +206,10 @@ return;
 
 
 
-
+//fun is used to focus that particular input so the user can write in typing box easily whenever refresh
+function Inputfocus() {
+  inputRef.current.focus();
+}
 
 
 
@@ -232,6 +239,7 @@ return;
     wordsRefArray[0].current.childNodes[0].className = "current";
   }
   function calulateWPM() {
+    // console.log( Math.round(correctChars / 5 / (testTime / 60)))
     return Math.round(correctChars / 5 / (testTime / 60));
   }
   function calulateAcc() {
@@ -245,7 +253,7 @@ return;
     <div>
       {EndTyping ? (
         <Result
-          WPM={calulateWPM()}
+          wpm={calulateWPM()}
           Accuracy={calulateAcc()}
           correctChars={correctChars}
           incorrectChars={incorrectChars}

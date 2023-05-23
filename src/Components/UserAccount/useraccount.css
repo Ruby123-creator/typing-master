@@ -1,0 +1,10 @@
+.Modal{
+    display: flex;
+    padding: 1px;
+    justify-content: center;
+    align-items: center;
+}
+.Modal-box{
+    width: 400px;
+    height: 400px;
+}

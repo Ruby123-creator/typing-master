@@ -1,5 +1,6 @@
 import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import UserAccount from '../UserAccount/UserAccount';
 function Header() {
   return (
     <div className='header-section'>
@@ -8,7 +9,8 @@ function Header() {
         </div>
         <div className='appName'>Typing Master</div>
         <div className='useraccount'>
-           <a href="http://" target="_blank" rel="noopener noreferrer"><AccountCircleIcon/></a> </div>
+          <UserAccount/>
+          </div> 
     </div>
   )
 }

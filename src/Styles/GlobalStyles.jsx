@@ -181,6 +181,24 @@ ul a{
 .right-stats{
   width: 50%;
 }
+.title{
+  margin-right:25px;
+  
+}
+.userinfo{
+  display:flex;
+  margin:40px;
+  align-items:center;
+  gap:20px;
+}
+.user-data{
+  display:flex;
+  gap:60px;
+}
+.userGraph{
+  width:100%;
+  height:100%;
+}
 
 `
   // color:${({theme})=>theme.textColor};

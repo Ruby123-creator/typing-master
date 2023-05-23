@@ -7,8 +7,8 @@ function Graph({ graphData }) {
   //  console.log(graphData)
   const { theme } = useTheme();
   return (
-    <>
-      <Line
+    <div >
+      <Line className='userGraph'
         data={
           {
             labels: graphData.map(i => i[0]),
@@ -22,7 +22,7 @@ function Graph({ graphData }) {
           }
         }
       />
-    </>
+    </div>
 
   )
 }

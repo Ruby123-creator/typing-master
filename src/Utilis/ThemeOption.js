@@ -45,7 +45,7 @@ const mettalTheme ={
 const greenishTheme ={
     label:'greenishTheme',
     background:'#05906A',
-    textColor:'#FCA024',
+    textColor:'#000',
     typeBoxText:'#fff'
 }
 const redishTheme ={
