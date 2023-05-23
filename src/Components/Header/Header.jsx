@@ -1,5 +1,4 @@
 import React from 'react'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserAccount from '../UserAccount/UserAccount';
 function Header() {
   return (
