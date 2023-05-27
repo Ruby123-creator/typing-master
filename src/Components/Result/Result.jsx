@@ -64,42 +64,6 @@ function Result(
                     }); 
                   } )    
     
-//     const resultRef = db.collection('Result');
-//     const {uid} = auth.currentUser;
-//     resultRef.add({
-//       wpm:wpm,
-//       Accuracy:Accuracy,
-//       timeStamp:new Date(),
-//       character:`${correctChars}/${incorrectChars}/${missedChars}`,
-//       userId:uid,
-//     }).then((res)=>{
-       
-//       toast.success('🦄 User Data save!', {
-//         position: "top-right",
-//         autoClose: 5000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//         theme: "dark",
-//         });            
-//     })
-//     .catch((error) => {
-      
-//         toast.error('not able to save user Data', {
-//             position: "top-right",
-//             autoClose: 5000,
-//             hideProgressBar: false,
-//             closeOnClick: true,
-//             pauseOnHover: true,
-//             draggable: true,
-//             progress: undefined,
-//             theme: "dark",
-//             });  
-//       // ..
-//     });
-
   
 }
 

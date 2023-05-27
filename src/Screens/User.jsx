@@ -53,13 +53,15 @@ function User() {
     <div>
     <Header />
     </div>
-      <div>
+      <div style={{margin:'0 40px'}}>
       <UserInfo totalTest={data.length}/>
-      <TableData data={data}/>
+      <Graph graphData={graphData}   />
+
 
       </div>
       <div>
-     <Graph graphData={graphData}  />
+      <TableData data={data}/>
+
      </div>
   </div>);
 }
