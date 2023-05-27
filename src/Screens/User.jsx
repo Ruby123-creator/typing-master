@@ -49,23 +49,18 @@ function User() {
     )
    
   }
-  return (<div className=''>
+  return (<div className='canvas'>
     <div>
     <Header />
     </div>
-    <div className='user-data'>
       <div>
       <UserInfo totalTest={data.length}/>
+      <TableData data={data}/>
 
       </div>
-      <div className='userGraph'>
+      <div>
      <Graph graphData={graphData}  />
      </div>
-     </div>
-    
-    <div style={{margin:'40px'}} >
-    <TableData data={data}/>
-    </div>
   </div>);
 }
 

@@ -9,6 +9,7 @@ import { createGlobalStyle } from "styled-components";
 //   padding:50px;
   font-size:20px;
   font-weight:700;
+
  }
  .canvas{
    display:grid;
@@ -18,7 +19,6 @@ import { createGlobalStyle } from "styled-components";
   align-items:center;
   text-align:center;
   gap:0.5rem;
-  
   width:100vw;
 
   
@@ -199,6 +199,11 @@ ul a{
   width:100%;
   height:100%;
 }
-
+.center-of-screen{
+  display:flex;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+}
 `
   // color:${({theme})=>theme.textColor};
